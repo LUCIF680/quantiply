@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios').default;
 const con = require('.././models/connection');
+const main = require('.././models/main');
 const fs = require('fs');
 
 router.get('/', async function(req, res,) {
@@ -11,7 +12,7 @@ router.get('/', async function(req, res,) {
   axios.get('https://api.nasa.gov/planetary/apod', {
     params: {
       api_key: 'DEMO_KEY',
-      date:'2022-03-09'
+      date:'2021-03-09'
     }
   })
   .then(response=> {
