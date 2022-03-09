@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Astronomy Picture of the Day</title>
+    </head>
+    <body>
+        <h2><%= response.title %></h2>
+        <p>Discover the cosmos each day.</p>
+        <p><strong>Date:</strong><%=response.date%></p>
+        <% if(response.media_type === "image"){ %>
+            <img src="<%= response.url %>">
+        <% } %>
+        <strong>Explanation:</strong>
+        <p><%=response.explanation%></p>
+    </body>
+    
+</html>
