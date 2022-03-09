@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios').default;
-const con = require('.././models/connection')
-/* GET home page. */
-router.get('/', async function(req, res, next) {
+const con = require('.././models/connection');
+const fs = require('fs');
+
+router.get('/', async function(req, res,) {
   let result = await con.findDate();
   if (result)
     return res.render('index', { response: result });
@@ -16,7 +17,6 @@ router.get('/', async function(req, res, next) {
   .then(response=> {
       /* I'm trusting the response data in this case otherwise 
       validation is required*/
-      
       con.insertOne(response.data)
       .catch(err=>{
         if (!err.code === 11000) res.json(err);
@@ -27,6 +27,5 @@ router.get('/', async function(req, res, next) {
     console.log(error);
   })
 })
-//});
 
 module.exports = router;
